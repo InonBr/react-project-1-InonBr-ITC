@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+
+.form {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 3px 4px rgba(200, 200, 200, 0.6);
+  width: 40%;
+  margin: auto;
+  padding: 0.5%;
+}
+
+.inputText {
+  border-radius: 8px;
+  resize: none;
+  padding: 8px;
+}
+
+.btn {
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
+  border-radius: 8px;
+  display: block;
+  cursor: pointer;
+  color: #ffffff;
+  margin: 8px auto;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 50px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
+}
+.btn:hover {
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
+}
+.btn:active {
+  position: relative;
+  top: 1px;
+}
