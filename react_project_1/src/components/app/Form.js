@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import NoteCards from './NoteCards';
+import Note from './Note';
 
 class Form extends React.Component {
   constructor(props) {
@@ -12,12 +11,6 @@ class Form extends React.Component {
     };
   }
 
-  getDate = () => {
-    const date = new Date();
-    console.log(date);
-    return date;
-  };
-
   onSubmit(event) {
     event.preventDefault();
     const date = new Date();
@@ -25,25 +18,17 @@ class Form extends React.Component {
       date.getMonth() + 1
     }-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
 
-    this.state.noteList.push({
-      id: this.state.noteId + this.state.noteList.length,
+    this.setState({ noteId: this.state.noteId + 1 });
+
+    const newList = {
+      id: this.state.noteId,
       text: this.state.note,
+      time: time,
+    };
+
+    this.setState({
+      noteList: [...this.state.noteList, newList],
     });
-
-    const ulNotesList = this.state.noteList.map((el) => (
-      <li key={el.id} id={el.id} className='liElement'>
-        <p className='text'>{time}</p>
-        <p className='text'>{el.text}</p>
-        <button className='btn delete'>Delete</button>
-      </li>
-    ));
-
-    ReactDOM.render(
-      <NoteCards>
-        <ul> {ulNotesList}</ul>
-      </NoteCards>,
-      document.querySelector('.divForList')
-    );
   }
 
   onNoteChange(event) {
@@ -52,20 +37,27 @@ class Form extends React.Component {
   }
 
   render() {
+    const ulNotesList = this.state.noteList.map((el) => (
+      <Note key={el.id} note={el}></Note>
+    ));
+
     return (
-      <div className='form'>
-        <form onSubmit={(event) => this.onSubmit(event)}>
-          <textarea
-            rows='5'
-            cols='40'
-            name='username'
-            type='text'
-            placeholder='Enter a Note'
-            className='inputText'
-            onChange={(event) => this.onNoteChange(event)}
-          ></textarea>
-          <input type='submit' value='Add Note' className='btn' />
-        </form>
+      <div>
+        <div className='form'>
+          <form onSubmit={(event) => this.onSubmit(event)}>
+            <textarea
+              rows='5'
+              cols='40'
+              name='username'
+              type='text'
+              placeholder='Enter a Note'
+              className='inputText'
+              onChange={(event) => this.onNoteChange(event)}
+            ></textarea>
+            <input type='submit' value='Add Note' className='btn' />
+          </form>
+        </div>
+        <ul> {ulNotesList}</ul>
       </div>
     );
   }
