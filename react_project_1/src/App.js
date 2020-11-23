@@ -6,6 +6,8 @@ function App() {
     <div className='App'>
       <h1>Notes App</h1>
       <From></From>
+
+      <div className='divForList'></div>
     </div>
   );
 }
