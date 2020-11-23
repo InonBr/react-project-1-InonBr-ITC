@@ -5,9 +5,21 @@ class Note extends React.Component {
     super(props);
   }
 
+  deleteElement() {
+    console.log();
+  }
+
   handleRemove(event) {
     event.preventDefault();
-    console.log('stuff');
+    // console.log(event.target.id);
+
+    let confirmMe = window.confirm(
+      'Are you sure that you want to remove this note?'
+    );
+    if (confirmMe === true) {
+      this.deleteElement();
+      // console.log(true);
+    }
   }
 
   render() {
