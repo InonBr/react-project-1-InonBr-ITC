@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import NoteCards from './NoteCards';
 
 class Form extends React.Component {
   constructor(props) {
@@ -26,11 +27,12 @@ class Form extends React.Component {
 
     // console.log(this.state.note);
     // console.log(this.state.noteList);
+    // <NoteCards>{ulNotesList}</NoteCards>;
 
     ReactDOM.render(
-      <onSubmit>
+      <NoteCards>
         <ul> {ulNotesList}</ul>
-      </onSubmit>,
+      </NoteCards>,
       document.querySelector('.divForList')
     );
   }

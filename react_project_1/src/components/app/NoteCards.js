@@ -1,14 +1,12 @@
-import Form from './Form';
+// class NoteCards {
+//   constructor(props) {
+//     this.props = props;
+//   }
+// }
 
-class NoteCards extends Form {
-  constructor(props) {
-    super(props);
-    this.state = {
-      note: '',
-    };
-
-    console.log(this.this.state.note);
-  }
+function NoteCards(props) {
+  console.log(props.children);
+  return <ul> {props.children}</ul>;
 }
 
 export default NoteCards;
