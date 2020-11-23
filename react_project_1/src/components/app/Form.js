@@ -12,8 +12,19 @@ class Form extends React.Component {
     };
   }
 
+  getDate = () => {
+    const date = new Date();
+    console.log(date);
+    return date;
+  };
+
   onSubmit(event) {
     event.preventDefault();
+    const date = new Date();
+    const time = `${date.getDate()}-${
+      date.getMonth() + 1
+    }-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+
     this.state.noteList.push({
       id: this.state.noteId + this.state.noteList.length,
       text: this.state.note,
@@ -21,6 +32,7 @@ class Form extends React.Component {
 
     const ulNotesList = this.state.noteList.map((el) => (
       <li key={el.id} id={el.id} className='liElement'>
+        <p className='text'>{time}</p>
         <p className='text'>{el.text}</p>
         <button className='btn delete'>Delete</button>
       </li>

@@ -20,6 +20,7 @@ li {
 
 .text {
   text-align: left;
+  margin-left: 20px;
 }
 
 .delete {
