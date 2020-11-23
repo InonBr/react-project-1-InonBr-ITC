@@ -5,20 +5,18 @@ class Note extends React.Component {
     super(props);
   }
 
-  deleteElement() {
-    console.log();
+  deleteElement(id) {
+    console.log(id);
   }
 
   handleRemove(event) {
     event.preventDefault();
-    // console.log(event.target.id);
 
     let confirmMe = window.confirm(
       'Are you sure that you want to remove this note?'
     );
     if (confirmMe === true) {
-      this.deleteElement();
-      // console.log(true);
+      this.deleteElement(event.target.id);
     }
   }
 
@@ -29,7 +27,7 @@ class Note extends React.Component {
       <li className='liElement'>
         <p className='text'>{el.time}</p>
         <p className='text'>{el.text}</p>
-        <button id={el.id} onClick={this.handleRemove}>
+        <button id={el.id} onClick={this.handleRemove.bind(this)}>
           Delete
         </button>
       </li>
