@@ -1,0 +1,14 @@
+.form {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 3px 4px rgba(200, 200, 200, 0.6);
+  width: 40%;
+  margin: auto;
+  padding: 0.5%;
+}
+
+.inputText {
+  border-radius: 8px;
+  resize: none;
+  padding: 8px;
+}

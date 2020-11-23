@@ -1,0 +1,30 @@
+li {
+  list-style-type: none;
+  margin: 0px;
+}
+
+.divForList {
+  padding: 0.5%;
+  margin: 20px;
+  margin-left: -40px;
+}
+
+.liElement {
+  background-color: rgba(200, 240, 240, 0.5);
+  margin-top: 10px !important;
+  border-radius: 8px;
+  padding: 0.5%;
+  margin: 0.5%;
+  position: relative;
+}
+
+.text {
+  text-align: left;
+}
+
+.delete {
+  display: block;
+  position: absolute;
+  right: 0.5%;
+  top: 5px;
+}

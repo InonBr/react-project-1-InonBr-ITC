@@ -20,14 +20,11 @@ class Form extends React.Component {
     });
 
     const ulNotesList = this.state.noteList.map((el) => (
-      <li key={el.id} id={el.id}>
-        {el.text}
+      <li key={el.id} id={el.id} className='liElement'>
+        <p className='text'>{el.text}</p>
+        <button className='btn delete'>Delete</button>
       </li>
     ));
-
-    // console.log(this.state.note);
-    // console.log(this.state.noteList);
-    // <NoteCards>{ulNotesList}</NoteCards>;
 
     ReactDOM.render(
       <NoteCards>
