@@ -7,8 +7,22 @@
   padding: 0.5%;
 }
 
+.formFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .inputText {
   border-radius: 8px;
   resize: none;
   padding: 8px;
+  margin: 8px auto;
+}
+
+.title {
+  border-radius: 8px;
+  margin: 8px auto;
+  padding: 8px;
+  width: 335px;
 }

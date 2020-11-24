@@ -5,7 +5,8 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      note: '',
+      noteTitleText: '',
+      noteText: '',
       noteList: [],
       noteId: 0,
     };
@@ -22,7 +23,8 @@ class Form extends React.Component {
 
     const newList = {
       id: this.state.noteId,
-      text: this.state.note.trim(),
+      title: this.state.noteTitleText.trim(),
+      text: this.state.noteText.trim(),
       time: time,
     };
 
@@ -31,9 +33,14 @@ class Form extends React.Component {
     });
   }
 
+  onTitleChange(event) {
+    const value = event.target.value;
+    this.setState({ noteTitleText: value });
+  }
+
   onNoteChange(event) {
     const value = event.target.value;
-    this.setState({ note: value });
+    this.setState({ noteText: value });
   }
 
   deleteElement(id) {
@@ -42,7 +49,6 @@ class Form extends React.Component {
         return id != element.id;
       }),
     });
-    console.log(this.state.noteList);
   }
 
   handleRemove(event) {
@@ -71,16 +77,26 @@ class Form extends React.Component {
       <div>
         <div className='form'>
           <form onSubmit={(event) => this.onSubmit(event)}>
-            <textarea
-              rows='5'
-              cols='40'
-              name='username'
-              type='text'
-              placeholder='Enter a Note'
-              className='inputText'
-              onChange={(event) => this.onNoteChange(event)}
-              required
-            ></textarea>
+            <div className='formFlex'>
+              <input
+                type='text'
+                className='title'
+                name='title'
+                placeholder='Enter a Title'
+                onChange={(event) => this.onTitleChange(event)}
+              />
+
+              <textarea
+                rows='5'
+                cols='40'
+                name='note'
+                type='text'
+                placeholder='Enter a Note'
+                className='inputText'
+                onChange={(event) => this.onNoteChange(event)}
+                required
+              />
+            </div>
             <input type='submit' value='Add Note' className='btn' />
           </form>
         </div>

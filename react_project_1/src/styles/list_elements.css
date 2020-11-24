@@ -7,6 +7,18 @@ li {
   margin: 0px;
 }
 
+.deleteBtn {
+  background-color: rgb(240, 127, 118);
+  color: azure;
+  border-radius: 8px;
+  display: block;
+  margin: 10px auto;
+  padding: 8px 20px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
+  font-weight: bold;
+}
+
 .divForList {
   padding: 0.5%;
   margin: 20px;

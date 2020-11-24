@@ -11,8 +11,13 @@ class Note extends React.Component {
     return (
       <li className='liElement'>
         <p className='text'>Created at: {el.time}</p>
+        <h4 className='title'>{el.title}</h4>
         <p className='text'>{el.text}</p>
-        <button id={el.id} onClick={(event) => this.props.onRemove(event)}>
+        <button
+          id={el.id}
+          className='deleteBtn'
+          onClick={(event) => this.props.onRemove(event)}
+        >
           Delete
         </button>
       </li>
