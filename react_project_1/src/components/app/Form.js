@@ -37,7 +37,11 @@ class Form extends React.Component {
   }
 
   deleteElement(id) {
-    console.log(id);
+    this.setState({
+      noteList: [...this.state.noteList].filter((element) => {
+        return id != element.id;
+      }),
+    });
     console.log(this.state.noteList);
   }
 
