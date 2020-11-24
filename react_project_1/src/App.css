@@ -1,6 +1,12 @@
 @import './styles/form.css';
 @import './styles/list_elements.css';
 
+html,
+body {
+  background-color: rgb(181, 222, 235);
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }

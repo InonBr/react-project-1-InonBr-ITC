@@ -22,7 +22,7 @@ class Form extends React.Component {
 
     const newList = {
       id: this.state.noteId,
-      text: this.state.note,
+      text: this.state.note.trim(),
       time: time,
     };
 
@@ -36,9 +36,31 @@ class Form extends React.Component {
     this.setState({ note: value });
   }
 
+  deleteElement(id) {
+    console.log(id);
+    console.log(this.state.noteList);
+  }
+
+  handleRemove(event) {
+    event.preventDefault();
+
+    let confirmMe = window.confirm(
+      'Are you sure that you want to remove this note?'
+    );
+    if (confirmMe) {
+      this.deleteElement(event.target.id);
+    }
+  }
+
   render() {
     const ulNotesList = this.state.noteList.map((el) => (
-      <Note key={el.id} note={el}></Note>
+      <Note
+        key={el.id}
+        note={el}
+        onRemove={(event) => {
+          this.handleRemove(event);
+        }}
+      ></Note>
     ));
 
     return (
@@ -53,6 +75,7 @@ class Form extends React.Component {
               placeholder='Enter a Note'
               className='inputText'
               onChange={(event) => this.onNoteChange(event)}
+              required
             ></textarea>
             <input type='submit' value='Add Note' className='btn' />
           </form>
