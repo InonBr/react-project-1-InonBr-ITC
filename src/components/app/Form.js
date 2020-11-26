@@ -2,6 +2,17 @@ import ReactModal from 'react-modal';
 import React from 'react';
 import Note from './Note';
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +22,7 @@ class Form extends React.Component {
       noteList: [],
       noteId: 0,
       showModal: false,
-      noteInModal: {},
+      noteInModal: -1,
     };
   }
 
@@ -49,7 +60,7 @@ class Form extends React.Component {
   deleteElement(id) {
     this.setState({
       noteList: [...this.state.noteList].filter((element) => {
-        return id != element.id;
+        return parseInt(id) !== element.id;
       }),
     });
   }
@@ -71,9 +82,19 @@ class Form extends React.Component {
         (note) => parseInt(el.id) === note.id
       );
 
-      console.log(indexOfelement);
+      if (indexOfelement !== -1) {
+        this.setState({ showModal: true, noteInModal: indexOfelement });
+      }
     }
   };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  // handleCloseModal() {
+  //   this.setState({ showModal: false, noteInModal: -1 });
+  // }
 
   render() {
     const ulNotesList = this.state.noteList.map((el) => (
@@ -88,6 +109,20 @@ class Form extends React.Component {
         }}
       ></Note>
     ));
+
+    let modal;
+    if (this.state.noteInModal !== -1) {
+      modal = (
+        <ReactModal
+          isOpen={this.state.showModal}
+          onRequestClose={this.handleCloseModal}
+          ariaHideApp={false}
+          style={customStyles}
+        >
+          <button>Close fdsfsdsdf Modal</button>
+        </ReactModal>
+      );
+    }
 
     return (
       <div>
@@ -118,15 +153,7 @@ class Form extends React.Component {
         </div>
         <ul> {ulNotesList}</ul>
 
-        {/* {true && <h1>{this.noteInModal}</h1>} */}
-
-        {/* <ReactModal
-          isOpen={this.state.showModal}
-          onRequestClose={this.handleCloseModal}
-          shouldCloseOnOverlayClick={true}
-          className='Modal'
-          overlayClassName='Overlay'
-        /> */}
+        {this.state.showModal && modal}
       </div>
     );
   }
