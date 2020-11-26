@@ -9,7 +9,10 @@ class Note extends React.Component {
     const { note: el } = this.props;
 
     return (
-      <li className='liElement'>
+      <li
+        className='liElement'
+        onClick={(event) => this.props.openModel(event)}
+      >
         <p className='text'>Created at: {el.time}</p>
         <h4 className='title'>{el.title}</h4>
         <p className='text'>{el.text}</p>

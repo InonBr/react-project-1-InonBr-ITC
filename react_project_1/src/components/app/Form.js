@@ -1,3 +1,4 @@
+import ReactModal from 'react-modal';
 import React from 'react';
 import Note from './Note';
 
@@ -9,6 +10,8 @@ class Form extends React.Component {
       noteText: '',
       noteList: [],
       noteId: 0,
+      showModal: false,
+      noteInModal: {},
     };
   }
 
@@ -70,13 +73,22 @@ class Form extends React.Component {
         onRemove={(event) => {
           this.handleRemove(event);
         }}
+        openModel={(event) => {
+          if (event.target.className !== 'deleteBtn') {
+            console.log(el);
+
+            this.setState(() => {
+              return { showModal: true, noteInModal: el };
+            });
+          }
+        }}
       ></Note>
     ));
 
     return (
       <div>
         <div className='form'>
-          <form onSubmit={(event) => this.onSubmit(event)}>
+          <form method='post' onSubmit={(event) => this.onSubmit(event)}>
             <div className='formFlex'>
               <input
                 type='text'
@@ -101,6 +113,16 @@ class Form extends React.Component {
           </form>
         </div>
         <ul> {ulNotesList}</ul>
+
+        {/* {true && <h1>{this.noteInModal}</h1>} */}
+
+        {/* <ReactModal
+          isOpen={this.state.showModal}
+          onRequestClose={this.handleCloseModal}
+          shouldCloseOnOverlayClick={true}
+          className='Modal'
+          overlayClassName='Overlay'
+        /> */}
       </div>
     );
   }
