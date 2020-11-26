@@ -66,7 +66,13 @@ class Form extends React.Component {
   }
 
   showModal = (event, el) => {
-    console.log(event, el);
+    if (event.target.className !== 'deleteBtn') {
+      const indexOfelement = this.state.noteList.findIndex(
+        (note) => parseInt(el.id) === note.id
+      );
+
+      console.log(indexOfelement);
+    }
   };
 
   render() {
@@ -82,17 +88,6 @@ class Form extends React.Component {
         }}
       ></Note>
     ));
-    // openModel={(event) => {
-    //   if (event.target.className !== 'deleteBtn') {
-    //     console.log(el);
-
-    //     this.setState(() => {
-    //       return { showModal: true, noteInModal: el };
-    //     });
-    //   }
-    // }}
-    // ></Note>
-    // ));
 
     return (
       <div>
