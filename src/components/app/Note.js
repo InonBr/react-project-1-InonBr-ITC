@@ -11,7 +11,7 @@ class Note extends React.Component {
     return (
       <li
         className='liElement'
-        onClick={(event) => this.props.openModel(event)}
+        onClick={(event) => this.props.openModel(event, el)}
       >
         <p className='text'>Created at: {el.time}</p>
         <h4 className='title'>{el.title}</h4>

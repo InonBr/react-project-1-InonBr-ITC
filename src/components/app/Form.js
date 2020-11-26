@@ -65,6 +65,10 @@ class Form extends React.Component {
     }
   }
 
+  showModal = (event, el) => {
+    console.log(event, el);
+  };
+
   render() {
     const ulNotesList = this.state.noteList.map((el) => (
       <Note
@@ -73,17 +77,22 @@ class Form extends React.Component {
         onRemove={(event) => {
           this.handleRemove(event);
         }}
-        openModel={(event) => {
-          if (event.target.className !== 'deleteBtn') {
-            console.log(el);
-
-            this.setState(() => {
-              return { showModal: true, noteInModal: el };
-            });
-          }
+        openModel={(event, el) => {
+          this.showModal(event, el);
         }}
       ></Note>
     ));
+    // openModel={(event) => {
+    //   if (event.target.className !== 'deleteBtn') {
+    //     console.log(el);
+
+    //     this.setState(() => {
+    //       return { showModal: true, noteInModal: el };
+    //     });
+    //   }
+    // }}
+    // ></Note>
+    // ));
 
     return (
       <div>
