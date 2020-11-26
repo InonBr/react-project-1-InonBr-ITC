@@ -1,6 +1,8 @@
 import ReactModal from 'react-modal';
 import React from 'react';
+
 import Note from './Note';
+import ModlePopUp from './ModlePopUp';
 
 const customStyles = {
   content: {
@@ -92,10 +94,6 @@ class Form extends React.Component {
     this.setState({ showModal: false });
   };
 
-  // handleCloseModal() {
-  //   this.setState({ showModal: false, noteInModal: -1 });
-  // }
-
   render() {
     const ulNotesList = this.state.noteList.map((el) => (
       <Note
@@ -119,7 +117,7 @@ class Form extends React.Component {
           ariaHideApp={false}
           style={customStyles}
         >
-          <button>Close fdsfsdsdf Modal</button>
+          <ModlePopUp noteData={this.state.noteList[this.state.noteInModal]} />
         </ReactModal>
       );
     }
