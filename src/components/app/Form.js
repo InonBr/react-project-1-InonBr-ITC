@@ -117,7 +117,13 @@ class Form extends React.Component {
           ariaHideApp={false}
           style={customStyles}
         >
-          <ModlePopUp noteData={this.state.noteList[this.state.noteInModal]} />
+          <ModlePopUp
+            noteData={this.state.noteList[this.state.noteInModal]}
+            updateSubmit={(event, noteId, noteTitleText, noteText) => {
+              event.preventDefault();
+              console.log(noteId, noteTitleText, noteText);
+            }}
+          />
         </ReactModal>
       );
     }
