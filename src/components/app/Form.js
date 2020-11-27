@@ -45,7 +45,7 @@ class Form extends React.Component {
     };
 
     this.setState({
-      noteList: [...this.state.noteList, newList],
+      noteList: [newList, ...this.state.noteList],
     });
   }
 
@@ -94,6 +94,21 @@ class Form extends React.Component {
     this.setState({ showModal: false });
   };
 
+  handleUpdate = (noteId, noteTitleText, noteText) => {
+    const updatedArr = this.state.noteList.map((note) => {
+      if (note.id === parseInt(noteId)) {
+        note.title = noteTitleText;
+        note.text = noteText;
+      }
+
+      return note;
+    });
+
+    this.setState({
+      noteList: updatedArr,
+    });
+  };
+
   render() {
     const ulNotesList = this.state.noteList.map((el) => (
       <Note
@@ -121,7 +136,8 @@ class Form extends React.Component {
             noteData={this.state.noteList[this.state.noteInModal]}
             updateSubmit={(event, noteId, noteTitleText, noteText) => {
               event.preventDefault();
-              console.log(noteId, noteTitleText, noteText);
+              this.handleCloseModal();
+              this.handleUpdate(noteId, noteTitleText, noteText);
             }}
           />
         </ReactModal>

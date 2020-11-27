@@ -22,7 +22,6 @@ class ModlePopUp extends React.Component {
     const { noteId, noteTitleText, noteText } = this.state;
 
     return (
-      //   <div>
       <form
         method='post'
         onSubmit={(event) =>
@@ -53,13 +52,6 @@ class ModlePopUp extends React.Component {
         </div>
         <input type='submit' value='Update' className='btn' />
       </form>
-      //{/* <div>
-      // <h1>title: {this.state.noteTitleText}</h1>
-      //</div>
-      //<div>
-      // <h1>text: {this.state.noteText}</h1>
-      // </div> */}
-      //{/* </div> */}
     );
   }
 }
