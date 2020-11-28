@@ -95,18 +95,15 @@ class Form extends React.Component {
   };
 
   handleUpdate = (noteId, noteTitleText, noteText) => {
-    const updatedArr = this.state.noteList.map((note) => {
-      if (note.id === parseInt(noteId)) {
-        note.title = noteTitleText;
-        note.text = noteText;
-      }
-
-      //s
-      return note;
-    });
-
     this.setState({
-      noteList: updatedArr,
+      noteList: this.state.noteList.map((note) => {
+        if (note.id === parseInt(noteId)) {
+          note.title = noteTitleText;
+          note.text = noteText;
+        }
+
+        return note;
+      }),
     });
   };
 
